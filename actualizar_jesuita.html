@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRUD de Jesuitas</title>
+</head>
+<body>
+    <h1>CRUD de Jesuitas</h1>
+    <!-- Formulario para Actualizar Jesuita -->
+    <h2>Actualizar Jesuita</h2>
+    <form action="crud_modf_jesuita.php" method="post">
+        <label for="idJesuita">ID del Jesuita:</label>
+        <input type="text" name="idJesuita" required>
+        <label for="nombre">Nuevo Nombre:</label>
+        <input type="text" name="nuevoNombre" required>
+        <label for="firma">Nueva Firma:</label>
+        <input type="text" name="nuevaFirma" required>
+        <input type="submit" name="enviar" value="Actualizar Jesuita">
+    </form>
+</body>
+</html>

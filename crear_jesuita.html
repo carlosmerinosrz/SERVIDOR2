@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRUD de Jesuitas</title>
+</head>
+<body>
+    <h1>CRUD de Jesuitas</h1>
+
+    <!-- Formulario para Crear Jesuita -->
+    <h2>Crear Jesuita</h2>
+    <form action="crud_crear_jesuita.php" method="post">
+        <label for="idJesuita">ID del Jesuita:</label>
+        <input type="text" name="idJesuita" required>
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" required>
+        <label for="firma">Firma:</label>
+        <input type="text" name="firma" required>
+        <input type="submit" name="enviar" value="Crear Jesuita">
+    </form>
+</body>
+</html>
