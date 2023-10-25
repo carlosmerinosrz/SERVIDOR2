@@ -1,5 +1,5 @@
 <?php
-class CrudBiblioteca
+class CrudJesuita
 {
     private $conexion;
 
