@@ -17,12 +17,19 @@ class CrudJesuita
         }
     }
 
-    public function modifJesuita($idJesuita, $nuevoNombre, $firma)
+    public function modifJesuita($idJesuita, $nuevoIdJesuita, $nuevoNombre, $firma)
     {
-        $sql = "UPDATE jesuita SET nombre='$nuevoNombre', firma='$firma' WHERE idJesuita=$idJesuita";
-
+        // Crear una copia con el nuevo ID
+        $sql = "INSERT INTO jesuita (idJesuita, nombre, firma) VALUES ($nuevoIdJesuita, '$nuevoNombre', '$firma')";
+        
         if ($this->conexion->query($sql) === TRUE) {
-            return "Jesuita actualizado con éxito.";
+            // Eliminar el registro original
+            $sql = "DELETE FROM jesuita WHERE idJesuita=$idJesuita";
+            if ($this->conexion->query($sql) === TRUE) {
+                return "Jesuita actualizado con éxito.";
+            } else {
+                return "Error al actualizar el jesuita: " . $this->conexion->error;
+            }
         } else {
             return "Error al actualizar el jesuita: " . $this->conexion->error;
         }
@@ -33,14 +40,15 @@ class CrudJesuita
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Recupera los datos del formulario
     $idJesuita = $_POST["idJesuita"];
+    $nuevoIdJesuita = $_POST["nuevoIdJesuita"];
     $nuevoNombre = $_POST["nuevoNombre"];
     $nuevaFirma = $_POST["nuevaFirma"];
 
-    // Crea una instancia de la clase CrudBiblioteca
-    $crud = new CrudBiblioteca();
+    // Crea una instancia de la clase CrudJesuita
+    $crud = new CrudJesuita();
 
     // Llama a la función para modificar al jesuita
-    $resultado = $crud->modifJesuita($idJesuita, $nuevoNombre, $nuevaFirma);
+    $resultado = $crud->modifJesuita($idJesuita, $nuevoIdJesuita, $nuevoNombre, $nuevaFirma);
 
     // Muestra el resultado
     echo $resultado;
