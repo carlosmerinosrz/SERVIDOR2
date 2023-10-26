@@ -1,16 +1,12 @@
 <?php
-class CrudJesuita
+class Crear_jesuita
 {
     private $conexion;
 
     public function __construct()
     {
-        $servidor = "localhost";
-        $usuario = "root";
-        $contrasena = ""; // Corregir la variable de la contraseña
-        $bbdd = "bbdd_jesuitas";
-
-        $this->conexion = new mysqli($servidor, $usuario, $contrasena, $bbdd);
+        require '../../configdb.php';
+        $this->conexion = new mysqli(SERVIDOR, USUARIO, CONTRASENIA, BBDD);
 
         if ($this->conexion->connect_error) {
             die("Error de conexión: " . $this->conexion->connect_error);
@@ -41,17 +37,5 @@ class CrudJesuita
     {
         $this->conexion->close();
     }
-}
-
-// Procesar el formulario
-if (isset($_POST['enviar'])) {
-    $idJesuita = $_POST['idJesuita'];
-    $nombre = $_POST['nombre'];
-    $firma = $_POST['firma'];
-
-    $crud = new CrudBiblioteca();
-    $mensaje = $crud->crearJesuita($idJesuita, $nombre, $firma);
-    $crud->cerrarConexion();
-    echo $mensaje;
 }
 ?>

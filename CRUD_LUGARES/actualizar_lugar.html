@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRUD de Jesuitas</title>
+</head>
+<body>
+    <h1>CRUD de Jesuitas</h1>
+    <!-- Formulario para Actualizar Jesuita -->
+    <h2>Actualizar Jesuita</h2>
+    <form action="procesos/procesos_lugar.php" method="post">
+        <label for="ip">IP:</label>
+        <input type="text" name="ip" required>
+        <label for="nuevoNombre">Nuevo Nombre del Lugar:</label>
+        <input type="text" name="nuevoNombre" required>
+        <label for="nuevaDescripcion">Nuevo Descripcion:</label>
+        <input type="text" name="nuevaDescripcion">
+        <input type="submit" name="enviar" value="Actualizar Lugar">
+    </form>
+</body>
+</html>

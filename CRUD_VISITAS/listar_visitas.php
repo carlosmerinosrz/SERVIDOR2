@@ -21,12 +21,9 @@
 </head>
 <body>
     <?php
-        $servidor = "localhost";
-        $usuario = "root";
-        $contraseña = "";
-        $bbdd = "bbdd_jesuitas";
+        require 'configdb.php';
 
-        $conexion = mysqli_connect($servidor, $usuario, $contraseña, $bbdd);
+        $this->conexion = new mysqli(SERVIDOR, USUARIO, CONTRASENIA, BBDD);
         if (!$conexion) {
             die("La conexión a la base de datos ha fallado: " . mysqli_connect_error());
         }
